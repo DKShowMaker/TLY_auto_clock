@@ -46,7 +46,7 @@ def login():
     except:
         print('error')
     else:
-        time.sleep(1)
+        time.sleep(5)
         browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[1]').screenshot('1.png')
         ocr = ddddocr.DdddOcr()
         with open('1.png', 'rb') as f:
@@ -57,8 +57,9 @@ def login():
         res = res.upper()
         input1 =browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[2]/div/input')
         input1.send_keys(res)
-        time.sleep(1)
+        time.sleep(5)
         button2=browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[3]/div/input')
         print('success2')
-        # button2.click()
+        button2.click()
+        browser.quit()
 login()
