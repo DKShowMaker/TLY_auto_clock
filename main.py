@@ -1,6 +1,7 @@
 import time
 import ddddocr
 import requests
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from lxml import etree
@@ -17,7 +18,14 @@ def login():
     tlycookie['user_email'] = '1320839695%40qq.com'
     tlycookie['is_web'] = '1'
 
-    browser = webdriver.Chrome('D:\Program Files (x86)\Python3.9\Scripts\chromedriver.exe')
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chromedriver = "/usr/bin/chromedriver"
+    os.environ["webdriver.chrome.driver"] = chromedriver
+    browser = webdriver.Chrome(options=chrome_options, executable_path=chromedriver)
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
     browser.get(url)
     for cookie in tlycookie:
