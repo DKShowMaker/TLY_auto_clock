@@ -18,6 +18,7 @@ jobs:
           pip install selenium
           pip install ddddocr
           pip install lxml
+          pip install requests
       - name: Install chromedriver
         run: |
          CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
