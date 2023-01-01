@@ -31,7 +31,7 @@ jobs:
               && chromedriver --version
       - name: Work
         run: |
-          python ./test.py
+          python ./main.py
       
         
         
