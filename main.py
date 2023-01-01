@@ -29,20 +29,27 @@ def login():
             "expires": None
         })
     browser.get(url)
-    time.sleep(1)
-    button=browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/p[2]/a')
+    time.sleep(5)
+
     try:
+        button = browser.find_element(By.XPATH, '/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/p[2]/button')
         button.click()
+        print('success')
     except:
-        print('already signed')
+        print('error')
     else:
+        time.sleep(1)
+        browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[1]').screenshot('1.png')
         ocr = ddddocr.DdddOcr()
         with open('1.png', 'rb') as f:
             img_bytes = f.read()
         res = ocr.classification(img_bytes)
         # print(len(res))
         # print(res.upper())
-        # res = res.upper()
-        # input1 =browser.find_element(By.CSS_SELECTOR,'')
-        # input1.send_keys(res)
+        res = res.upper()
+        input1 =browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[2]/div/input')
+        input1.send_keys(res)
+        time.sleep(1)
+        button2=browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[3]/div/input')
+        # button2.click()
 login()
