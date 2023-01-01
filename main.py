@@ -51,5 +51,6 @@ def login():
         input1.send_keys(res)
         time.sleep(1)
         button2=browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[3]/div/input')
+        print('success2')
         # button2.click()
 login()
