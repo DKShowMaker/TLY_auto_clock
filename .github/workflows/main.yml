@@ -4,7 +4,6 @@ on:
     - cron: "10 * * * *"
 jobs:
   my-job1:
-    name: My Job1
     runs-on: ubuntu-latest
     steps:
       - name: check
