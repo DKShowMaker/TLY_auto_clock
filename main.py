@@ -64,7 +64,7 @@ def login():
             img_bytes = f.read()
         res = ocr.classification(img_bytes)
         # print(len(res))
-        # print(res.upper())
+        print(res.upper())
         res = res.upper()
         
         input1 =browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[2]/div/input')
