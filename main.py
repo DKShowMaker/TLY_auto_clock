@@ -5,6 +5,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from lxml import etree
+import cv2
 
 def login():
     url='https://tly30.com/modules/index.php'
@@ -48,6 +49,16 @@ def login():
     else:
         time.sleep(5)
         browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[1]').screenshot('1.png')
+        
+        image = cv2.imread('1.png')
+        blur = cv2.pyrMeanShiftFiltering(image, sp=8, sr=60)
+        # 灰度图像
+        gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+        # 二值化
+        ret, binary = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY_INV)
+        # 逻辑运算  让背景为白色  字体为黑  便于识别
+        cv2.bitwise_not(binary, binary)
+        cv2.imwrite('1.png', binary)
         ocr = ddddocr.DdddOcr()
         with open('1.png', 'rb') as f:
             img_bytes = f.read()
@@ -55,6 +66,7 @@ def login():
         # print(len(res))
         # print(res.upper())
         res = res.upper()
+        
         input1 =browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[2]/div/input')
         input1.send_keys(res)
         time.sleep(5)
