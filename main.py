@@ -7,10 +7,8 @@ from selenium.webdriver.common.by import By
 from lxml import etree
 import cv2
 
-flag = 0
-count =1
+count = 1
 def login():
-    global flag
     global count
     # COOKIE添加
     url='https://tly30.com/modules/index.php'
@@ -50,8 +48,6 @@ def login():
         button.click()
         print('NOT SIGN')
     except:
-        flag=0
-        count = count + 1
         print('HAVE SIGNED')
     else:
         time.sleep(5)
@@ -82,6 +78,6 @@ def login():
         button2.click()
         time.sleep(5)
         browser.quit()
-        flag =1
-while flag == 0 and count <= 3:
+while count <= 3:
     login()
+    count = count + 1
