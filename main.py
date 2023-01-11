@@ -83,5 +83,5 @@ def login():
         time.sleep(5)
         browser.quit()
         flag =1
-while flag == 0 or count <= 3:
+while flag == 0 and count <= 3:
     login()
