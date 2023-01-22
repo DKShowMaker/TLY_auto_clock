@@ -8,12 +8,15 @@ from lxml import etree
 import cv2
 
 count = 1
+flag=0
+
 def login():
     global count
+    global flag
     # COOKIE添加
-    url='https://tly30.com/modules/index.php'
-    tlycookie={}
-    tlycookie['user_pwd']='c7f8cdcddece84d263ff8987a7eedfcaa144e6774f3d2'
+    url = 'https://tly30.com/modules/index.php'
+    tlycookie = {}
+    tlycookie['user_pwd'] = 'c7f8cdcddece84d263ff8987a7eedfcaa144e6774f3d2'
     tlycookie['PHPSESSID'] = 'l8ucoleu68haat8u1vlg00eac7'
     tlycookie['uid'] = '1729598'
     tlycookie['_gid'] = 'GA1.2.214496544.1672488920'
@@ -34,7 +37,7 @@ def login():
     browser.get(url)
     for cookie in tlycookie:
         browser.add_cookie({
-            "domain":"tly30.com",
+            "domain": "tly30.com",
             "name": cookie,
             "value": tlycookie[cookie],
             "path": '/',
@@ -49,10 +52,14 @@ def login():
         print('NOT SIGN')
     except:
         print('HAVE SIGNED')
+        flag=1
+        exit(0)
     else:
         time.sleep(5)
-        browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[1]').screenshot('1.png')
-        
+        browser.find_element(By.XPATH,
+                             '/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[1]').screenshot(
+            '1.png')
+
         image = cv2.imread('1.png')
         blur = cv2.pyrMeanShiftFiltering(image, sp=8, sr=60)
         # 灰度图像
@@ -69,15 +76,21 @@ def login():
         # print(len(res))
         print(res.upper())
         res = res.upper()
-        
-        input1 =browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[2]/div/input')
+
+        input1 = browser.find_element(By.XPATH,
+                                      '/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[2]/div/input')
         input1.send_keys(res)
         time.sleep(5)
-        button2=browser.find_element(By.XPATH,'/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[3]/div/input')
+        button2 = browser.find_element(By.XPATH,
+                                       '/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/form/div[3]/div/input')
         print('success2')
         button2.click()
         time.sleep(5)
         browser.quit()
+
+
 while count <= 3:
     login()
     count = count + 1
+if flag==0:
+    exit(1)
