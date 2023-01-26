@@ -91,4 +91,4 @@ def login():
 
 while flag == 0:
     login()
-    time.sleep(60)
+    time.sleep(10)
