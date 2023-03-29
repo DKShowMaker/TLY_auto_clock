@@ -14,7 +14,7 @@ def login():
     global count
     global flag
     # COOKIE添加
-    url = 'https://tly30.com/modules/index.php'
+    url = 'https://tly31.com/modules/index.php'
     tlycookie = {}
     tlycookie['user_pwd'] = 'c7f8cdcddece84d263ff8987a7eedfcaa144e6774f3d2'
     tlycookie['PHPSESSID'] = 'l8ucoleu68haat8u1vlg00eac7'
@@ -37,7 +37,7 @@ def login():
     browser.get(url)
     for cookie in tlycookie:
         browser.add_cookie({
-            "domain": "tly30.com",
+            "domain": "tly31.com",
             "name": cookie,
             "value": tlycookie[cookie],
             "path": '/',
