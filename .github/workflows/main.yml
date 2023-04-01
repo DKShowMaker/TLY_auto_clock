@@ -21,6 +21,7 @@ jobs:
           pip install requests
           pip install opencv-python
           pip install opencv-contrib-python
+          pip install undetected_chromedriver
       - name: Install chromedriver
         run: |
          CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
