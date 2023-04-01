@@ -27,7 +27,7 @@ def login():
     tlycookie['is_web'] = '1'
     # 浏览器
     chromedriver = "/usr/bin/chromedriver"
-    browser = uc.Chrome(options=chrome_options, executable_path=chromedriver)
+    browser = uc.Chrome(executable_path=chromedriver)
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
     browser.get(url)
     for cookie in tlycookie:
