@@ -26,6 +26,15 @@ def login():
     tlycookie['user_email'] = '1320839695%40qq.com'
     tlycookie['is_web'] = '1'
     # 浏览器
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--enable-javascript')
+    chrome_options.add_argument('--disable-gpu')
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15'
+    chrome_options.add_argument('User-Agent={0}'.format(user_agent))
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', True)
     chromedriver = "/usr/local/bin/chromedriver"
     browser = uc.Chrome(executable_path=chromedriver)
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
