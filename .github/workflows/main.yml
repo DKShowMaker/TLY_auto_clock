@@ -25,9 +25,8 @@ jobs:
       - name: Install chromedriver
         run: |
           sudo apt install ./chrome/google-chrome-stable_current_amd64.deb
-          sudo apt install zip
           unzip ./chrome/chromedriver_linux64.zip
-          sudo mv ./chrome/chromedriver /usr/local/bin/chromedriver
+          sudo mv chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
       - name: Work
         run: |
