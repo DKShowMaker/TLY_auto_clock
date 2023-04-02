@@ -26,8 +26,8 @@ def login():
     tlycookie['user_email'] = '1320839695%40qq.com'
     tlycookie['is_web'] = '1'
     # 浏览器
-    chromedriver = "/usr/bin/chromedriver"
-    browser = uc.Chrome(executable_path=chromedriver)
+    chromedriver = "D:\Program Files (x86)\Python3.9\Scripts\chromedriver"
+    browser = uc.Chrome(driver_executable_path=chromedriver)
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
     browser.get(url)
     for cookie in tlycookie:
@@ -39,7 +39,7 @@ def login():
             "expires": None
         })
     browser.get(url)
-    time.sleep(30)
+    time.sleep(10)
 
     try:
         button = browser.find_element(By.XPATH, '/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/p[2]/button')
