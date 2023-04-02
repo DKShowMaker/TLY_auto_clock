@@ -39,7 +39,7 @@ def login():
             "expires": None
         })
     browser.get(url)
-    time.sleep(5)
+    time.sleep(30)
 
     try:
         button = browser.find_element(By.XPATH, '/html/body/div/div/section[2]/div[2]/div[3]/div/div[2]/p[2]/button')
@@ -86,4 +86,4 @@ def login():
 
 while flag == 0:
     login()
-    time.sleep(10)
+    time.sleep(60)
