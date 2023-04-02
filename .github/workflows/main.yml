@@ -17,7 +17,7 @@ jobs:
           pip install requests
           pip install opencv-python
           pip install opencv-contrib-python
-          pip install undetected_chromedriver
+          pip install undetected_chromedriver==3.0.6
       - name: Install chromedriver
         run: |
           sudo apt install ./chrome/google-chrome-stable_current_amd64.deb
