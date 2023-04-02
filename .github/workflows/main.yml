@@ -24,15 +24,15 @@ jobs:
           pip install undetected_chromedriver
       - name: Install chromedriver
         run: |
-         wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
-              && sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
-              && sudo apt-get update \
-              && sudo apt-get install google-chrome-stable=109.0.5414 \
-              && wget https://chromedriver.storage.googleapis.com/109.0.5414/chromedriver_linux64.zip \
+         CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
+              && CHROMEDRIVER_RELEASE=$(curl --location --fail --retry 3 http://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}) \
+              && curl --silent --show-error --location --fail --retry 3 --output /tmp/chromedriver_linux64.zip "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_RELEASE/chromedriver_linux64.zip" \
+              && cd /tmp \
               && unzip chromedriver_linux64.zip \
-              && sudo mv chromedriver /usr/local/bin/ \
-              && sudo chown root:root /usr/local/bin/chromedriver \
-              && sudo chmod +x /usr/local/bin/chromedriver
+              && rm -rf chromedriver_linux64.zip \
+              && sudo mv chromedriver /usr/local/bin/chromedriver \
+              && sudo chmod +x /usr/local/bin/chromedriver \
+              && chromedriver --version
 
       - name: Work
         run: |
