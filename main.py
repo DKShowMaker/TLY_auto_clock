@@ -26,7 +26,7 @@ def login():
     tlycookie['user_email'] = '1320839695%40qq.com'
     tlycookie['is_web'] = '1'
     # 浏览器
-    chromedriver = "D:\Program Files (x86)\Python3.9\Scripts\chromedriver"
+    chromedriver = "/usr/local/bin/chromedriver"
     browser = uc.Chrome(driver_executable_path=chromedriver)
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
     browser.get(url)
