@@ -36,7 +36,7 @@ def login():
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('useAutomationExtension', True)
     chromedriver = "/usr/local/bin/chromedriver"
-    browser = uc.Chrome(executable_path=chromedriver)
+    browser = uc.Chrome(executable_path=chromedriver,chrome_options=chrome_options,service_args=['--quiet'])
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
     browser.get(url)
     for cookie in tlycookie:
