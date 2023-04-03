@@ -20,11 +20,11 @@ jobs:
           pip install undetected_chromedriver==3.4.5
       - name: Install chromedriver
         run: |
-          wget https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2F1084013%2Fchrome-linux.zip?generation=1671143102457414&alt=media
-          wget https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2F1084013%2Fchromedriver_linux64.zip?generation=1671143107889609&alt=media
-          unzip Linux_x64_1084013_chrome-linux.zip
+          wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F104.0.5112.102%2Fgoogle-chrome-stable_current_amd64.deb
+          wget https://chromedriver.storage.googleapis.com/104.0.5112.79/chromedriver_linux64.zip
+          sudo apt install ./google-chrome-stable_current_amd64.deb
           unzip chromedriver_linux64.zip
-          sudo mv ./chromedriver_linux64/chromedriver /usr/local/bin/chromedriver
+          sudo mv ./chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
       - name: Work
         run: |
