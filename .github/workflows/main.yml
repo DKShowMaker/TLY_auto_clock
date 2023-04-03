@@ -22,7 +22,7 @@ jobs:
         run: |
           wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F104.0.5112.102%2Fgoogle-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb
           wget https://chromedriver.storage.googleapis.com/104.0.5112.79/chromedriver_linux64.zip
-          sudo apt install ./google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb --allow-downgrades
           unzip chromedriver_linux64.zip
           sudo mv ./chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
