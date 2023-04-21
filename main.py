@@ -31,10 +31,10 @@ def login():
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--enable-javascript')
     chrome_options.add_argument('--disable-gpu')
-    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15'
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/112.0.1722.48'
     chrome_options.add_argument('User-Agent={0}'.format(user_agent))
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    chrome_options.add_experimental_option('useAutomationExtension', True)
+#     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+#     chrome_options.add_experimental_option('useAutomationExtension', True)
     chromedriver = "/usr/local/bin/chromedriver"
     browser = uc.Chrome(executable_path=chromedriver,chrome_options=chrome_options,service_args=['--quiet'])
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
