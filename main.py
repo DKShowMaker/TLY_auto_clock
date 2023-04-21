@@ -31,7 +31,7 @@ def login():
     chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:12306")
     # chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     # chrome_options.add_experimental_option('useAutomationExtension', True)
-    chromedriver = "D:\Program Files (x86)\Python3.9\Scripts\chromedriver"
+    chromedriver = "/usr/local/bin/chromedriver"
     browser = webdriver.Chrome(executable_path=chromedriver, chrome_options=chrome_options)
     print('open chrome')
     # 通过程序调用谷歌浏览器，chromedriver需要下载，然后下载路径填到里面。
